@@ -55,13 +55,6 @@ class Search extends Component {
                     <button onClick={ () => this.props.retrieveFlightInfo(this.state.depart, this.state.arrive, this.state.airline) }>Submit!</button>
                  </div>
               </div>
-              {/* <Display
-                // style={{ display: 'none' }}
-                
-                depart={ this.state.depart }
-                arrive={ this.state.arrive }
-                airline={ this.state.airline }
-              ></Display> */}
           </div>
         )
     }

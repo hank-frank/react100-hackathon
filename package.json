@@ -61,5 +61,6 @@
     "type": "git",
     "url": "https://github.com/sandiegocodeschool/react100-vstda.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "proxy": "http://localhost:3000/"
 }

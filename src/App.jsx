@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from "axios";
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 import Search from './Search.jsx';
 import Display from './Display.jsx';
-
 
 class App extends Component {
     constructor(props) {
@@ -26,21 +26,22 @@ class App extends Component {
       this.retrieveWeatherInfo = this.retrieveWeatherInfo.bind(this);
     }
 
-  retrieveFlightInfo(depart, arrive, airline) {
+  retrieveFlightInfo(depart, arrive) {
           console.log("depart before setState for Weather: " + depart);
           // console.log(arrive);
           this.setState({
             departForWeather: depart,
             arriveForWeather: arrive
           })
-          console.log("setState for departForWeather: " + this.state.departForWeather)
+          // console.log("setState for departForWeather: " + this.state.departForWeather)
 
+       //axios call to  y own server where I set up a /route for /weather. Passing it variables by putting them into the route as key/val pairs. Then taking the reponse sent by my server and working with the data sent. 
       axios 
         .get(
-          `http://aviation-edge.com/v2/public/routes?key=&departureIata=${depart}&arrivalIata=${arrive}`
-          // `http://aviation-edge.com/v2/public/routes?key=${process.env.REACT_APP_API_KEY}&departureIata=SAN&arrivalIata=LAS`
+          `/flight?d=${depart}&a=${arrive}`
         )
         .then (res => {
+          console.log("from app.jsx res.data: " + res.data)
           this.setState({
             flightData: res.data
           })
@@ -157,7 +158,7 @@ class App extends Component {
 
       axios
         .get(
-          `http://api.openweathermap.org/data/2.5/forecast?id=${cityCode}&APPID=`
+          `/weather?c=${cityCode}`
         )
         .then (response => {
           // console.log(response.data);

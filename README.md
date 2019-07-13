@@ -55,5 +55,4 @@ Using the API's:
 Open Weather: https://openweathermap.org/
 Aviation Edge: https://aviation-edge.com/developers/
 
-Repo is being set with out API keys. If you want it to function you will need to insert API keys for these two API's.
 
