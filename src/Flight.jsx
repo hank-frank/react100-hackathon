@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
-
-
 class Flight extends Component {
     constructor(props) {
       super(props);
-
     }
 
     render() {
         return (
-          
             <tbody>
                 <tr>
                     <td>{this.props.departureIata}</td>
@@ -21,7 +17,6 @@ class Flight extends Component {
                     <td>{this.props.airlineIata}</td>
                 </tr>
             </tbody>
-          
         )
     }
 };

@@ -1,13 +1,15 @@
 {
-    "version": 2,
-    "routes": [
-      { "src": "/", "dest": "/public/index.html" },
-      { "src": "/bundle.js", "dest": "/dist/bundle.js" },
-      { "src": "/(.*)", "dest": "/server/index.js" }
-    ],
-    "builds": [
-      { "src": "dist/**/*", "use": "@now/static" },
-      { "src": "public/*", "use": "@now/static" },
-      { "src": "server/*", "use": "@now/node" }
-    ]
-  }
+  "version": 2,
+  "name": "react100-hackathon",
+  "builds": [
+      { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/static/$1" },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
+    { "src": "/(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "/index.html" }
+  ]
+ }
